@@ -21,9 +21,9 @@
             </div>
 
             <div>
-                <img src="img/product/product3_big.jpg" alt="Thé Blue of London">
+                <img src="public/img/product/product3_big.jpg" alt="Thé Blue of London">
 
-                <form action="#" method="post">
+                <form method="post">
                     <div>
                         <select id="quantities" name="quantity">
                             <option data-price="9,00€" value="100">Sachet de 100 g</option>
@@ -62,4 +62,4 @@
         </article>
     </section>
 </main>
-<script src="js/price.js" defer></script>
+<script src="public/js/price.js" defer></script>

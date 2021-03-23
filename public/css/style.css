@@ -1,0 +1,672 @@
+/********************************************************
+                        GLOBAL
+********************************************************/
+/*déclaration de variables CSS*/
+
+/*
+ATTENTION : Les variables CSS ne sont pas prises en charge par les navigateurs IE ni Edge versions 14 et inférieures. 
+La version 15 de Edge gère partiellement les variables CSS. Depuis la version 16 Edge gère totalement les variables CSS.
+Firefox les gère depuis la version 31, Chrome depuis la version 49, Opera depuis la version 36 et Safari depuis la 9.3
+
+A NOTER que cela pose aussi des soucis pour le validateur CSS qui ne reconnait pas encore :root et les variables.
+*/
+:root {
+    --bg-header-footer: #96B011 url(../img/bg.jpg) no-repeat bottom;
+    --bg-section: #fff;
+}
+/*fin de déclaration de variables CSS*/
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    background-color: #f2f2f2;
+    color: #666;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.6rem;
+}
+
+body *{
+    box-sizing: border-box;
+    outline: none;
+}
+
+section{ /*habillage par défaut de toutes les sections du site*/
+    margin-bottom: 30px;
+    background: var(--bg-section);
+    padding:30px;
+}
+
+h1, h2, h3, h4{
+    color: #96B011;
+    font-family: 'Amaranth', sans-serif;
+    text-align: center;
+}
+
+h1{
+    font-size: 3.2rem;
+}
+
+h2{
+    font-size: 2.5rem;
+}
+
+h3{
+    font-size: 2rem;
+}
+
+main, footer{
+    line-height: 1.8;
+}
+
+.container{
+    margin: 0 auto;
+    max-width: 1100px;
+}
+
+.flex{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.btn{
+    background-color: #B09067;
+    color: #fff;
+    display: inline-block;
+    margin: 20px 0;
+    padding: 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.btn:hover{
+    background-color: rgba(176,144,103,0.75)
+}
+
+.img-left{
+    float:left;
+    margin-right: 15px;
+}
+
+.img-right{
+    float:right;
+    margin-left: 15px;
+}
+
+.article-tea{
+    text-align: center;
+}
+
+.price{
+    font-size: 2.4rem
+}
+
+/********************************************************
+                        HEADER
+********************************************************/
+
+header{
+    background: var(--bg-header-footer);
+    color: #fff;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+header > p{
+    background-color: rgba(0,0,0,0.1);
+    margin-top: 0;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header > div > div > a{
+    display: inline-block;
+    margin-top: 100px;
+}
+
+header div.flex{
+    flex-direction: column-reverse;
+    padding: 15px 0;
+}
+
+header p.panier{
+    background-color: #96B011;
+    margin: 0;
+    position: fixed;
+    top: 60px;
+    z-index: 1000;
+}
+
+header p.panier {
+    border-radius: 0 50px 50px 0;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
+    font-size: 3rem;
+    padding: 10px 15px;
+}
+
+header p.panier span{
+    display: none;
+}
+
+header p.panier .fa-shopping-cart{
+    border: 1px solid #fff;
+    border-radius: 50%;
+    padding: 15px;
+}
+
+header nav.flex{
+    padding-bottom: 20px;
+}
+
+header nav a{
+    color: #fff;
+    padding:20px 30px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+header nav a:hover{
+    background: rgba(255, 255, 255, 0.2);
+}
+
+header #ribbon{
+    display: none;
+}
+
+/********************************************************
+                         MAIN
+********************************************************/
+
+main > h1{
+    background-color: var(--bg-section);
+    margin-bottom: 0;
+    padding-top: 30px;
+}
+
+/***** Page d'accueil (home) *****/
+
+#home .event, 
+#home .flexslider .flex-direction-nav{
+    display: none;
+}
+
+#home .flexslider{
+    border: none;
+}
+
+#home .choice-tea div.flex {
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#home .choice-tea > div:hover figure{
+    opacity: 0.5;
+}
+
+#home .choice-tea > div figure:hover{
+    opacity: 1;
+}
+
+#home .choice-tea figure{
+    flex-basis: 50%;
+}
+
+#home .choice-tea figure, 
+#home .selection-tea figure{
+    margin: 16px 0;
+    text-align: center;
+}
+
+#home .choice-tea figcaption a, 
+#home .selection-tea figcaption{
+    color: #666;
+    font-family: 'Amaranth', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+
+#home .selection-tea h2{
+    font-size: 3.2rem;
+}
+
+#home .selection-tea h3{
+    font-size: 2.5rem;
+}
+
+#home .selection-tea h3 span{
+    background: white;
+    padding: 0 10px;
+}
+
+#home .selection-tea h3:after{
+    content:"";
+    display: block;
+    border-top: 1px solid #96B011;
+    margin-top: -20px;
+}
+
+#home .selection-tea figure img{
+    width: 100%;
+}
+
+/***** Page 'Thés' (listing) *****/
+
+#listing section article img{
+    width: 100%;
+}
+
+#listing section h2{
+    text-align: left;
+}
+
+#listing section h2 span{
+    background: white;
+    padding: 0 10px 0 0;
+}
+
+#listing section h2:after{
+    content:"";
+    display: block;
+    border-top: 1px solid #96B011;
+    margin-top: -20px;
+}
+
+#listing section article h3{
+    color: #666;
+}
+
+/***** Page 'Produit' (product) *****/
+
+#product article{
+    text-align: center;
+}
+
+#product article h2, 
+#product article h3{
+    color: #666;
+}
+
+#product article h2{
+    margin-bottom: 0;
+}
+
+#product article h3{
+    font-weight: normal;
+    margin-top: 0;
+}
+
+#product article .fa-star{
+    color: #ffdc0f;
+}
+
+#product article .fa-heart{
+    color: #e7877a;
+}
+
+#product article .fa-star:last-of-type{
+    color: #666;
+}
+
+#product article a{
+    color: #96B011;
+    display: block;
+    text-decoration: none;
+}
+
+#product article img{
+    width: 100%
+}
+
+#product article > p{
+    text-align: left;
+}
+
+#product article > p:nth-of-type(3),
+#product article > p:last-of-type{
+    font-weight: bold;
+}
+
+#product form select{
+    border: 1px solid #ccc;
+    color: #666;
+    padding: 10px;
+    width: 100%
+}
+
+#product form p{
+    border: 0;
+    color: #666;
+    font-family: 'Amaranth', sans-serif;
+    font-size: 3.5rem;
+    margin: 0;
+    text-align: center;
+    width: 100%
+}
+
+#product form button{
+    border: 0;
+    display: inline-block;
+    width: 100%;
+}
+
+/***** Page 'Notre histoire' (about) *****/
+
+#about h2, #about h3{
+    text-align: left;
+}
+
+#about h2{
+    color: #666;
+}
+
+#about section .img-left,
+#about section .img-right{
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+#about aside{
+    background-color: rgba(150, 176, 17, 0.2);
+    margin-top: 30px;
+    padding: 30px;
+    text-align: center;
+}
+
+#about aside h3{
+    color: #666;
+    text-align: center;
+}
+
+#about aside img{
+    margin-top: 30px;
+    width: 80px;
+}
+
+/********************************************************
+                        FOOTER
+********************************************************/
+
+footer{
+    background: var(--bg-header-footer);
+}
+
+footer > div{
+    background-color: #879e0f;
+    padding:10px 0;
+}
+
+footer ul.flex{ 
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+}
+
+footer ul.flex li{
+    color: #fff;
+    flex-basis: 50%;
+    opacity: 0.5;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin:30px 0;
+}
+
+footer ul.flex li .fas {
+    display: block;
+    font-size: 3.2rem;
+    margin: 0 0 15px;
+}
+
+footer nav.flex{
+    margin-bottom: 30px;
+}
+
+footer nav ul:first-of-type {
+    margin: 25px 0 0;
+}
+
+footer nav ul {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    text-align: center;
+}
+
+footer nav ul li{
+    margin: 0 0 15px;
+}
+
+footer nav ul a{
+    color: #fff;
+    opacity: 0.5;
+    text-decoration: none;
+}
+
+footer nav:first-of-type a:hover, footer nav ul a:hover{
+    opacity: 1;
+}
+
+footer nav ul h3{
+    color: #fff;
+    font-family: "open sans", sans-serif;
+    font-weight: normal;
+    margin: 35px 0;
+    text-transform: uppercase;
+}
+
+footer nav + div{
+    background-color: rgba(0,0,0,0.1);
+    color: #fff;
+    padding: 40px 30px 30px;
+    text-align: center;
+}
+
+footer img{
+    width: 60px;
+}
+
+footer a{
+    color: #fff;
+}
+
+/********************************************************
+                      Responsive
+********************************************************/
+
+/****** TABLET 768PX ******/
+
+@media screen and (min-width: 768px){
+
+    /* HEADER */
+
+    header div.flex, header nav.flex{
+        align-items: center;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    header > div > div > a{
+        margin-top: 0;
+        padding-left: 30px;
+    }
+    
+    header p.panier{
+        position: relative;
+        top: 0;
+    }
+    
+    header p.panier {
+        background-color: transparent;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 0 34px;
+    }
+    
+    header p.panier span{
+        display: inline;
+        font-size: 2rem;
+    }
+
+    header nav{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    header #ribbon{
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100px;
+    }
+
+    /* Home */
+
+    #home .event{
+        display: block;
+        text-align: center;
+    }
+
+    #home .event p:first-of-type{
+        color: #96B011;
+        font-family: 'Amaranth', sans-serif;
+        font-size: 4rem;
+        margin: 0 0 20px;
+    }
+
+    #home .event p:last-of-type{
+        font-size: 1.4rem;
+        margin: 0 0 25px;
+    }
+
+    #home .event p:first-of-type + img{
+        width: 100%
+    }
+
+    #home .choice-tea .flex{
+        flex-direction: row;
+    }
+
+    #home .selection-tea figure img{
+        width: auto;
+    }
+
+    /* Listing */
+
+    #listing section article img{
+        width: auto;
+    }
+
+    /* Product */
+
+    #product article > div{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #product article > div:first-of-type div:last-of-type{
+        margin-top: 20px;
+    }
+
+    #product article > div:nth-of-type(2){
+        margin: 30px 0;
+    }
+
+    #product article img{
+        flex-basis: 50%;
+    }
+
+    #product article form{
+        flex-basis: 45%;
+        margin-top: 30px;
+    }
+
+    #product article form p,
+    #product article form a{
+        text-align: right;
+    }
+
+    #product form button{
+        margin-top: 40px;
+    }
+
+    /* About */
+    #about section .img-left,
+    #about section .img-right{
+        margin-bottom: 0;
+        width: 50%;
+    }
+
+    /* FOOTER */
+
+    footer ul.flex{
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+
+    footer ul.flex li{
+        flex-basis: auto;
+        margin:30px;
+    }
+
+    footer nav.flex{
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    footer nav ul:first-of-type {
+        margin: 0;
+    }
+}
+
+/***** DESKTOP 1025PX *****/
+
+@media screen and (min-width: 1025px){
+
+    /* Global */
+    .article-tea{
+        padding: 0 20px;
+    }
+
+    /* Home */
+
+    #home .choice-tea div.flex{
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+
+    #home .selection-tea div.flex{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    #home .selection-tea figure img{
+        width: 100%;
+    }
+
+    /* Listing */
+
+    #listing section div.flex{
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    #listing section article img{
+        width: 100%;
+    }
+
+    /* About */
+
+    #about aside{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #about aside article{
+        padding: 0 15px;
+    }
+}

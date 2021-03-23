@@ -9,7 +9,7 @@
             <article class="article-tea">
                 <h3>Blue of London</h3>
 
-                <img src="img/product/product3_big.jpg" alt="Thé blue of london">
+                <img src="public/img/product/product3_big.jpg" alt="Thé blue of london">
 
                 <p>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque, explicabo nemo. Maiores odit molestiae, amet saepe, quo mollitia enim delectus vitae tempora ut totam minus fugit officiis aspernatur eum velit?
@@ -29,7 +29,7 @@
             <article class="article-tea">
                 <h3>Thé des Lords</h3>
 
-                <img src="img/product/product6_big.jpg" alt="Thé blue of london">
+                <img src="public/img/product/product6_big.jpg" alt="Thé blue of london">
 
                 <p>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque, explicabo nemo. Maiores odit molestiae, amet saepe, quo mollitia enim delectus vitae tempora ut totam minus fugit officiis aspernatur eum velit?
@@ -49,7 +49,7 @@
             <article class="article-tea">
                 <h3>Thé des vahinés</h3>
 
-                <img src="img/product/product3_big.jpg" alt="Thé blue of london">
+                <img src="public/img/product/product3_big.jpg" alt="Thé blue of london">
 
                 <p>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque, explicabo nemo. Maiores odit molestiae, amet saepe, quo mollitia enim delectus vitae tempora ut totam minus fugit officiis aspernatur eum velit?
@@ -79,7 +79,7 @@
             <article class="article-tea">
                 <h3>Thé du hammam</h3>
 
-                <img src="img/product/product1_big.jpg" alt="Thé blue of london">
+                <img src="public/img/product/product1_big.jpg" alt="Thé blue of london">
 
                 <p>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque, explicabo nemo. Maiores odit molestiae, amet saepe, quo mollitia enim delectus vitae tempora ut totam minus fugit officiis aspernatur eum velit?
@@ -99,7 +99,7 @@
             <article class="article-tea">
                 <h3>Vive le thé&nbsp;!</h3>
 
-                <img src="img/product/product4_big.jpg" alt="Thé blue of london">
+                <img src="public/img/product/product4_big.jpg" alt="Thé blue of london">
 
                 <p>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque, explicabo nemo. Maiores odit molestiae, amet saepe, quo mollitia enim delectus vitae tempora ut totam minus fugit officiis aspernatur eum velit?
@@ -119,7 +119,7 @@
             <article class="article-tea">
                 <h3>Thé des alizés</h3>
 
-                <img src="img/product/product5_big.jpg" alt="Thé blue of london">
+                <img src="public/img/product/product5_big.jpg" alt="Thé blue of london">
 
                 <p>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque, explicabo nemo. Maiores odit molestiae, amet saepe, quo mollitia enim delectus vitae tempora ut totam minus fugit officiis aspernatur eum velit?
@@ -149,7 +149,7 @@
             <article class="article-tea">
                 <h3>Vive les fêtes</h3>
 
-                <img src="img/product/product8_big.jpg" alt="Thé blue of london">
+                <img src="public/img/product/product8_big.jpg" alt="Thé blue of london">
 
                 <p>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque, explicabo nemo. Maiores odit molestiae, amet saepe, quo mollitia enim delectus vitae tempora ut totam minus fugit officiis aspernatur eum velit?
@@ -169,7 +169,7 @@
             <article class="article-tea">
                 <h3>Fleur d'orangér Oolong</h3>
 
-                <img src="img/product/product9_big.jpg" alt="Thé blue of london">
+                <img src="public/img/product/product9_big.jpg" alt="Thé blue of london">
 
                 <p>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque, explicabo nemo. Maiores odit molestiae, amet saepe, quo mollitia enim delectus vitae tempora ut totam minus fugit officiis aspernatur eum velit?
@@ -189,7 +189,7 @@
             <article class="article-tea">
                 <h3>Oolong 7 agrumes</h3>
 
-                <img src="img/product/product10_big.jpg" alt="Thé blue of london">
+                <img src="public/img/product/product10_big.jpg" alt="Thé blue of london">
 
                 <p>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque, explicabo nemo. Maiores odit molestiae, amet saepe, quo mollitia enim delectus vitae tempora ut totam minus fugit officiis aspernatur eum velit?
@@ -219,7 +219,7 @@
             <article class="article-tea">
                 <h3>Thé des songes blancs</h3>
 
-                <img src="img/product/product11_big.jpg" alt="Thé blue of london">
+                <img src="public/img/product/product11_big.jpg" alt="Thé blue of london">
 
                 <p>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque, explicabo nemo. Maiores odit molestiae, amet saepe, quo mollitia enim delectus vitae tempora ut totam minus fugit officiis aspernatur eum velit?
@@ -239,7 +239,7 @@
             <article class="article-tea">
                 <h3>Bai mu dan</h3>
 
-                <img src="img/product/product12_big.jpg" alt="Thé blue of london">
+                <img src="public/img/product/product12_big.jpg" alt="Thé blue of london">
 
                 <p>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque, explicabo nemo. Maiores odit molestiae, amet saepe, quo mollitia enim delectus vitae tempora ut totam minus fugit officiis aspernatur eum velit?
@@ -259,7 +259,7 @@
             <article class="article-tea">
                 <h3>Aiguilles d'Argent</h3>
 
-                <img src="img/product/product13_big.jpg" alt="Thé blue of london">
+                <img src="public/img/product/product13_big.jpg" alt="Thé blue of london">
 
                 <p>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque, explicabo nemo. Maiores odit molestiae, amet saepe, quo mollitia enim delectus vitae tempora ut totam minus fugit officiis aspernatur eum velit?
@@ -289,7 +289,7 @@
             <article class="article-tea">
                 <h3>Rooibos à la verveine</h3>
 
-                <img src="img/product/product14_big.jpg" alt="Thé blue of london">
+                <img src="public/img/product/product14_big.jpg" alt="Thé blue of london">
 
                 <p>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque, explicabo nemo. Maiores odit molestiae, amet saepe, quo mollitia enim delectus vitae tempora ut totam minus fugit officiis aspernatur eum velit?
@@ -309,7 +309,7 @@
             <article class="article-tea">
                 <h3>Spicy Passion</h3>
 
-                <img src="img/product/product15_big.jpg" alt="Thé blue of london">
+                <img src="public/img/product/product15_big.jpg" alt="Thé blue of london">
 
                 <p>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque, explicabo nemo. Maiores odit molestiae, amet saepe, quo mollitia enim delectus vitae tempora ut totam minus fugit officiis aspernatur eum velit?
@@ -329,7 +329,7 @@
             <article class="article-tea">
                 <h3>Rooibos des amants</h3>
 
-                <img src="img/product/product16_big.jpg" alt="Thé blue of london">
+                <img src="public/img/product/product16_big.jpg" alt="Thé blue of london">
 
                 <p>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque, explicabo nemo. Maiores odit molestiae, amet saepe, quo mollitia enim delectus vitae tempora ut totam minus fugit officiis aspernatur eum velit?

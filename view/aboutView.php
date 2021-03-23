@@ -7,7 +7,7 @@
         <h3>Amélie, fondatrice de Cup of Tea</h3>
 
         <p>
-            <img class="img-left" src="img/amelie.jpg" alt="Amélie, fondatrice de Cup of Tea"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, voluptas assumenda tenetur cum iure eveniet inventore voluptates adipisci, reprehenderit error pariatur doloribus sit cupiditate ad nulla repudiandae voluptatibus saepe natus. Lorem ipsum dolor sit amet consectetur adipisicing elit. A ratione saepe impedit similique ut rerum eum dignissimos soluta voluptatum laboriosam, quos ipsam cumque iure consequuntur quia accusamus! Enim, in aspernatur.
+            <img class="img-left" src="public/img/amelie.jpg" alt="Amélie, fondatrice de Cup of Tea"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, voluptas assumenda tenetur cum iure eveniet inventore voluptates adipisci, reprehenderit error pariatur doloribus sit cupiditate ad nulla repudiandae voluptatibus saepe natus. Lorem ipsum dolor sit amet consectetur adipisicing elit. A ratione saepe impedit similique ut rerum eum dignissimos soluta voluptatum laboriosam, quos ipsam cumque iure consequuntur quia accusamus! Enim, in aspernatur.
         </p>
         <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, voluptas assumenda tenetur cum iure eveniet inventore voluptates adipisci, reprehenderit error pariatur doloribus sit cupiditate ad nulla repudiandae voluptatibus saepe natus. Lorem ipsum dolor sit amet consectetur adipisicing elit. A ratione saepe impedit similique ut rerum eum dignissimos soluta voluptatum laboriosam, quos ipsam cumque iure consequuntur quia accusamus! Enim, in aspernatur.
@@ -18,7 +18,7 @@
 
         <h3>Xavier, fondatreur de Cup of Tea</h3>
         <p>
-            <img class="img-right" src="img/xavier.jpg" alt="Amélie, fondatrice de Cup of Tea"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, voluptas assumenda tenetur cum iure eveniet inventore voluptates adipisci, reprehenderit error pariatur doloribus sit cupiditate ad nulla repudiandae voluptatibus saepe natus. Lorem ipsum dolor sit amet consectetur adipisicing elit. A ratione saepe impedit similique ut rerum eum dignissimos soluta voluptatum laboriosam, quos ipsam cumque iure consequuntur quia accusamus! Enim, in aspernatur.
+            <img class="img-right" src="public/img/xavier.jpg" alt="Amélie, fondatrice de Cup of Tea"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, voluptas assumenda tenetur cum iure eveniet inventore voluptates adipisci, reprehenderit error pariatur doloribus sit cupiditate ad nulla repudiandae voluptatibus saepe natus. Lorem ipsum dolor sit amet consectetur adipisicing elit. A ratione saepe impedit similique ut rerum eum dignissimos soluta voluptatum laboriosam, quos ipsam cumque iure consequuntur quia accusamus! Enim, in aspernatur.
         </p>
         <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, voluptas assumenda tenetur cum iure eveniet inventore voluptates adipisci, reprehenderit error pariatur doloribus sit cupiditate ad nulla repudiandae voluptatibus saepe natus. Lorem ipsum dolor sit amet consectetur adipisicing elit. A ratione saepe impedit similique ut rerum eum dignissimos soluta voluptatum laboriosam, quos ipsam cumque iure consequuntur quia accusamus! Enim, in aspernatur.
@@ -40,21 +40,21 @@
         </article>
         <aside>
             <article>
-                <img src="img/concept/1.svg" alt="">
+                <img src="public/img/concept/1.svg" alt="">
                 <h3>Lorem ipsum</h3>
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, voluptas assumenda tenetur cum iure eveniet inventore voluptates adipisci, reprehenderit error pariatur doloribus sit cupiditate ad nulla repudiandae voluptatibus saepe natus. Lorem ipsum dolor sit amet consectetur adipisicing elit. A ratione saepe impedit similique ut rerum eum dignissimos soluta voluptatum laboriosam, quos ipsam cumque iure consequuntur quia accusamus! Enim, in aspernatur.
                 </p>
             </article>
             <article>
-                <img src="img/concept/2.svg" alt="">
+                <img src="public/img/concept/2.svg" alt="">
                 <h3>Dolor sit amet</h3>
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, voluptas assumenda tenetur cum iure eveniet inventore voluptates adipisci, reprehenderit error pariatur doloribus sit cupiditate ad nulla repudiandae voluptatibus saepe natus. Lorem ipsum dolor sit amet consectetur adipisicing elit. A ratione saepe impedit similique ut rerum eum dignissimos soluta voluptatum laboriosam, quos ipsam cumque iure consequuntur quia accusamus! Enim, in aspernatur.
                 </p>
             </article>
             <article>
-                <img src="img/concept/3.svg" alt="">
+                <img src="public/img/concept/3.svg" alt="">
                 <h3>Consectetur</h3>
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, voluptas assumenda tenetur cum iure eveniet inventore voluptates adipisci, reprehenderit error pariatur doloribus sit cupiditate ad nulla repudiandae voluptatibus saepe natus. Lorem ipsum dolor sit amet consectetur adipisicing elit. A ratione saepe impedit similique ut rerum eum dignissimos soluta voluptatum laboriosam, quos ipsam cumque iure consequuntur quia accusamus! Enim, in aspernatur.
