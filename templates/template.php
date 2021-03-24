@@ -2,14 +2,20 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Cup of Tea <?= '- '.$title ?></title>
+        <!-- Description de la page -->
         <meta name="description" content="Site vitrine pour des thés">
+        <!-- Balise nécessaire pour le responsive -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title> Chosissez votre thé - Cup of Tea</title>
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+        <!-- Image Favicon (raccourci Favoris) -->
+	    <link rel="icon" type="image/png" href="public/img/title.png">
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com"> 
         <link href="https://fonts.googleapis.com/css?family=Amaranth" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+        <!-- FontAwesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
         <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
         <!-- FlexSlider -->
@@ -22,27 +28,25 @@
     </head>
     <body>
         <header>
-            <p>Livraison offerte à partir de 65€ d'achat&nbsp;!</p>
-
+            <p class="dark"> Livraison offerte à partir de 65€ d'achat ! </p>
+            <img src="public/img/ribbon.svg" alt="Elu meilleur thé" id="ribbon">
             <div class="container">
                 <div class="flex"> 
                     <a href="index.php?page=home"><img src="public/img/logo.png" alt="Logo du site Cup Of Tea"></a>
                     <p class="panier">
-                        <span>Mon panier</span> <i class="fas fa-shopping-cart"></i> <strong>42,00€</strong>
+                        <span>Mon panier</span> <i class="fas fa-shopping-cart"></i> <span class="price">42,00€</span>
                     </p>
                 </div>
 
-                <nav class="flex"> 
-                    <a href="index.php?page=listing">thés</a>
-                    <!-- <a href="#">grands crus</a> -->
-                    <!-- <a href="#">accessoires</a> -->
-                    <!-- <a href="#">épicerie</a> -->
-                    <a href="index.php?page=about">notre histoire</a>
+                <nav> 
+                    <ul class="flex">
+                        <li><a href="index.php?page=listing"> Thés </a></li>
+                        <!-- <li><a href="#"> Grands crus </a></li> -->
+                        <!-- <li><a href="#"> Accessoires </a></li> -->
+                        <!-- <li><a href="#"> Épicerie </a></li> -->
+                        <li><a href="index.php?page=about"> Notre histoire </a></li>
+                    </ul>
                 </nav>
-            </div>
-
-            <div id="ribbon">
-                <img src="public/img/ribbon.svg" alt="Elu meilleur thé">
             </div>
         </header>
         
@@ -50,24 +54,22 @@
         <?php require 'view/' .$path; ?>
         
         <footer>
-            
             <div>
                 <ul class="container flex">
-                    <li><i class="fas fa-lock"></i> paiement sécurisé</li>
-                    <li><i class="fas fa-truck"></i> livraison offerte</li>
-                    <li><i class="fas fa-money-bill-alt"></i> carte fidélité</li>
-                    <li><i class="fas fa-phone"></i> service client</li>
-                    <li><i class="fas fa-check-circle"></i> garantie qualité</li>
+                    <li><i class="fas fa-lock"></i> Paiement sécurisé</li>
+                    <li><i class="fas fa-truck"></i> Livraison offerte</li>
+                    <li><i class="fas fa-money-bill-alt"></i> Carte fidélité</li>
+                    <li><i class="fas fa-phone"></i> Service client</li>
+                    <li><i class="fas fa-check-circle"></i> Garantie qualité</li>
                 </ul>
             </div>
         
             <nav class="container flex">
                 <ul>
-                    <li><h3>cup of tea</h3></li>
-                    <li><a href="index.php?page=listing">Nos thés</a></li>
+                    <li><h3> Cup of Tea</h3></li>
                     <li><a href="index.php?page=about">Notre histoire</a></li>
                     <!-- <li><a href="#">Nos boutiques</a></li> -->
-                    <!-- <li><a href="#">Le thé de A à Z</a></li> -->
+                    <li><a href="index.php?page=listing">Le thé de A à Z</a></li>
                     <!-- <li><a href="#">Espace Clients Professionnels</a></li> -->
                     <!-- <li><a href="#">Recrutement</a></li> -->
                     <!-- <li><a href="#">Contactez-nous&nbsp;!</a></li> -->
@@ -75,7 +77,7 @@
                 </ul>
             
                 <ul>
-                    <li><h3>commandez en ligne</h3></li>
+                    <li><h3> Commandez en ligne </h3></li>
                     <li><a href="#">Première visite</a></li>
                     <!-- <li><a href="#">Aide - FAQ</a></li> -->
                     <!-- <li><a href="#">Service client</a></li> -->
@@ -85,10 +87,10 @@
                 </ul>
             
                 <ul>
-                    <li><h3>suivez-nous</h3></li>
+                    <li><h3> Suivez-nous </h3></li>
                     <li><a href="index.php?page=about">Notre histoire</a></li>
                     <!-- <li><a href="#">Nos boutiques</a></li> -->
-                    <!-- <li><a href="#">Le thé de A à Z</a></li> -->
+                    <li><a href="index.php?page=listing">Le thé de A à Z</a></li>
                     <!-- <li><a href="#">Espace Clients Professionnels</a></li> -->
                 </ul>
         </nav>
