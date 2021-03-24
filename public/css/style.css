@@ -1,7 +1,13 @@
 /********************************************************
                         GLOBAL
 ********************************************************/
-/*déclaration de variables CSS*/
+
+/* Déclaration de variables CSS */
+
+:root {
+    --bg-header-footer: #96B011 url(../img/bg.jpg) no-repeat bottom;
+    --bg-section: #fff;
+}
 
 /*
 ATTENTION : Les variables CSS ne sont pas prises en charge par les navigateurs IE ni Edge versions 14 et inférieures. 
@@ -10,32 +16,27 @@ Firefox les gère depuis la version 31, Chrome depuis la version 49, Opera depui
 
 A NOTER que cela pose aussi des soucis pour le validateur CSS qui ne reconnait pas encore :root et les variables.
 */
-:root {
-    --bg-header-footer: #96B011 url(../img/bg.jpg) no-repeat bottom;
-    --bg-section: #fff;
-}
-/*fin de déclaration de variables CSS*/
 
-html{
+html{ /* Base de 10 pixels pour faciliter les calculs */
     font-size: 62.5%;
 }
 
-body{
+body{ /* Retour à la taille de police par défaut (16 px) */
     background-color: #f2f2f2;
     color: #666;
     font-family: 'Open Sans', sans-serif;
     font-size: 1.6rem;
 }
 
-body *{
+body *{ /* Modification des tailles par rapport à la bordure */
     box-sizing: border-box;
     outline: none;
 }
 
 section{ /*habillage par défaut de toutes les sections du site*/
-    margin-bottom: 30px;
     background: var(--bg-section);
-    padding:30px;
+    margin-bottom: 3rem;
+    padding: 3rem;
 }
 
 h1, h2, h3, h4{
@@ -71,6 +72,18 @@ main, footer{
     text-align: center;
 }
 
+.flex article{
+    flex-basis: 33%;
+}
+
+article.flex{
+    justify-content: space-between;
+}
+
+article.flex p{
+    margin: 0;
+}
+
 .btn{
     background-color: #B09067;
     color: #fff;
@@ -95,12 +108,17 @@ main, footer{
     margin-left: 15px;
 }
 
-.article-tea{
+.dark{
+    background-color: rgba(0,0,0,0.1);
     text-align: center;
+    padding: 1rem 0;
+    margin-top: 0;
 }
 
 .price{
-    font-size: 2.4rem
+    margin: 0;
+    font-size: 2.4rem;
+    font-weight: bold;
 }
 
 /********************************************************
@@ -110,59 +128,67 @@ main, footer{
 header{
     background: var(--bg-header-footer);
     color: #fff;
-    margin-bottom: 30px;
+    margin-bottom: 3rem;
     position: relative;
 }
 
-header > p{
-    background-color: rgba(0,0,0,0.1);
-    margin-top: 0;
-    padding: 10px 0;
-    text-align: center;
-}
-
-header > div > div > a{
-    display: inline-block;
-    margin-top: 100px;
-}
+/*--------------- Logo --------------*/
 
 header div.flex{
     flex-direction: column-reverse;
-    padding: 15px 0;
+    padding: 1.5rem 0;
 }
 
-header p.panier{
+header div.flex a{
+    display: inline-block;
+    margin-top: 10rem;
+}
+
+/*--------------- Panier --------------*/
+
+header .panier{
     background-color: #96B011;
     margin: 0;
     position: fixed;
-    top: 60px;
+    top: 6rem;
     z-index: 1000;
 }
 
-header p.panier {
-    border-radius: 0 50px 50px 0;
+header .panier {
+    border-radius: 0 5rem 5rem 0;
     box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
     font-size: 3rem;
-    padding: 10px 15px;
+    padding: 1rem 1.5rem;
 }
 
-header p.panier span{
+header .panier span:first-child{
     display: none;
 }
 
 header p.panier .fa-shopping-cart{
     border: 1px solid #fff;
     border-radius: 50%;
-    padding: 15px;
+    padding: 1.5rem;
 }
 
-header nav.flex{
-    padding-bottom: 20px;
+/*--------------- Navigation --------------*/
+
+header nav{
+    padding-bottom: 2rem;
+}
+
+header nav ul{
+    list-style: none;
+    padding: 0
+}
+
+header nav li{
+    padding: 2rem 3rem;
 }
 
 header nav a{
+    padding: 1rem;
     color: #fff;
-    padding:20px 30px;
     text-decoration: none;
     text-transform: uppercase;
 }
@@ -171,7 +197,7 @@ header nav a:hover{
     background: rgba(255, 255, 255, 0.2);
 }
 
-header #ribbon{
+#ribbon{
     display: none;
 }
 
@@ -213,19 +239,22 @@ main > h1{
     flex-basis: 50%;
 }
 
-#home .choice-tea figure, 
-#home .selection-tea figure{
-    margin: 16px 0;
+#home figure{
+    margin: 1.6rem 0;
     text-align: center;
 }
 
-#home .choice-tea figcaption a, 
+#home .choice-tea a, 
 #home .selection-tea figcaption{
     color: #666;
     font-family: 'Amaranth', sans-serif;
     font-size: 2rem;
     letter-spacing: 1px;
     text-decoration: none;
+}
+
+#home .selection-tea article{
+    text-align: center;
 }
 
 #home .selection-tea h2{
@@ -238,14 +267,14 @@ main > h1{
 
 #home .selection-tea h3 span{
     background: white;
-    padding: 0 10px;
+    padding: 0 1rem;
 }
 
 #home .selection-tea h3:after{
     content:"";
     display: block;
     border-top: 1px solid #96B011;
-    margin-top: -20px;
+    margin-top: -2rem;
 }
 
 #home .selection-tea figure img{
@@ -445,7 +474,7 @@ footer nav ul a{
     text-decoration: none;
 }
 
-footer nav:first-of-type a:hover, footer nav ul a:hover{
+footer div:first-child li:hover, footer nav ul a:hover{
     opacity: 1;
 }
 
@@ -482,15 +511,15 @@ footer a{
 
     /* HEADER */
 
-    header div.flex, header nav.flex{
+    header div.flex, header ul.flex{
         align-items: center;
         flex-direction: row;
         justify-content: space-between;
     }
     
-    header > div > div > a{
+    header div.flex > a{
         margin-top: 0;
-        padding-left: 30px;
+        padding-left: 3rem;
     }
     
     header p.panier{
@@ -510,12 +539,7 @@ footer a{
         font-size: 2rem;
     }
 
-    header nav{
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    header #ribbon{
+    #ribbon{
         display: block;
         position: absolute;
         right: 0;
@@ -628,7 +652,7 @@ footer a{
 @media screen and (min-width: 1025px){
 
     /* Global */
-    .article-tea{
+    #listing article, .selection-tea article{
         padding: 0 20px;
     }
 
