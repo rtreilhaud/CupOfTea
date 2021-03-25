@@ -9,7 +9,6 @@
             <div class="flex">
                 <?php 
                     $products = $productMod->fetchProductsFromCategory($category['id']);
-                    // var_dump($products);
 
                     foreach($products as $product):
                 ?>

@@ -45,6 +45,12 @@
                         <!-- <li><a href="#"> Accessoires </a></li> -->
                         <!-- <li><a href="#"> Épicerie </a></li> -->
                         <li><a href="index.php?page=about"> Notre histoire </a></li>
+                        <?php if(!$tools->isConnected()): ?>
+                            <li><a href="index.php?page=login"> Connexion </a></li>
+                        <?php else: ?>
+                            <li><a href="index.php?page=account"> Mon compte </a></li>
+                            <li><a href="index.php?page=logout"> Déconnexion </a></li>
+                        <?php endif; ?>
                     </ul>
                 </nav>
             </div>
@@ -72,13 +78,13 @@
                     <li><a href="index.php?page=listing">Le thé de A à Z</a></li>
                     <!-- <li><a href="#">Espace Clients Professionnels</a></li> -->
                     <!-- <li><a href="#">Recrutement</a></li> -->
-                    <!-- <li><a href="#">Contactez-nous&nbsp;!</a></li> -->
+                    <!-- <li><a href="#">Contactez-nous !</a></li> -->
                     <!-- <li><a href="#">L'Ecole du thé</a></li> -->
                 </ul>
             
                 <ul>
                     <li><h3> Commandez en ligne </h3></li>
-                    <li><a href="#">Première visite</a></li>
+                    <li><a href="index.php?page=register">Première visite</a></li>
                     <!-- <li><a href="#">Aide - FAQ</a></li> -->
                     <!-- <li><a href="#">Service client</a></li> -->
                     <li><a href="#">Suivre ma commande</a></li>
