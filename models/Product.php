@@ -36,7 +36,7 @@ class Product extends Connect{
         $query = $this->_pdo->prepare($sql);
         // Puis je l'exécute 
         $query->execute(['product_id' => $product_id]);
-        // Je recupère plusieurs lignes donc j'ecris fetchAll et je retourne le résultat 
+        // Je recupère le résultat 
         return $query->fetch(PDO::FETCH_ASSOC);
     }
 }
