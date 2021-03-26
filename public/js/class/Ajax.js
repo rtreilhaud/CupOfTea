@@ -33,31 +33,30 @@ export default class Ajax{
 
             this._formData = formData;
 
-        }else{
+        }
 
-            fetch('index.php?action=updateProfile', {method: 'POST', body: this._formData})
-            .then(response => response.json())
-            .then(result => {
+        fetch('index.php?action=updateProfile', {method: 'POST', body: this._formData})
+        .then(response => response.json())
+        .then(result => {
 
-                // Gestion des messages d'erreur
-                if(result.error){
+            // Gestion des messages d'erreur
+            if(result.error){
 
-                    this._divResult.innerHTML += `<p class="error"> ${result.error} </p>`;
-                }
+                this._divResult.innerHTML += `<p class="error"> ${result.error} </p>`;
+            }
 
-                // Gestion des messages de succès
-                if(result.success){
+            // Gestion des messages de succès
+            if(result.success){
 
-                    this._divResult.innerHTML += `<p class="success"> ${result.success} </p>`;
-                }    
+                this._divResult.innerHTML += `<p class="success"> ${result.success} </p>`;
+            }    
 
-                // Modifie les valeurs de la page
-                for(let i=0; i < result.id.length; i++){
+            // Modifie les valeurs de la page
+            for(let i=0; i < result.id.length; i++){
 
-                    document.getElementById(result.id[i]).textContent = result.values[i];
-                }
-            })
-        }   
+                document.getElementById(result.id[i]).textContent = result.values[i];
+            }
+        })
     }
 
     // Envoie le formulaire de mot de passe pour le mettre à jour
@@ -67,9 +66,38 @@ export default class Ajax{
 
             this._formData = formData;
 
-        }else{
+        }
 
-            fetch('index.php?action=updatePassword', {method: 'POST', body: this._formData})
+        fetch('index.php?action=updatePassword', {method: 'POST', body: this._formData})
+        .then(response => response.json())
+        .then(result => {
+
+            // Gestion des messages d'erreur
+            if(result.error){
+
+                this._divResult.innerHTML = `<p class="error"> ${result.error} </p>`;
+            }
+
+            // Gestion des messages de succès
+            if(result.success){
+
+                this._divResult.innerHTML = `<p class="success"> ${result.success} </p>`;
+            } 
+        })
+    }
+
+    // Envoie le mot de passe pour supprimer le compte
+    deleteAccountAjax(formData = null){
+
+        return new Promise(resolve => {
+
+            if(formData !== null){
+
+                this._formData = formData;
+    
+            }
+    
+            fetch('index.php?action=deleteAccount', {method: 'POST', body: this._formData})
             .then(response => response.json())
             .then(result => {
 
@@ -83,51 +111,37 @@ export default class Ajax{
                 if(result.success){
 
                     this._divResult.innerHTML = `<p class="success"> ${result.success} </p>`;
+                    resolve(true);
                 } 
+
+                resolve(false);
             })
+        })
+    }
+
+    // Redirige si le compte a bien été supprimé
+    async deleteAccount(formData = null){
+
+        const result = await this.deleteAccountAjax(formData);
+        if(result){
+            window.location.replace('index.php?page=home');
         }
     }
 
-    // Envoie le mot de passe pour supprimer le compte
-    deleteAccountAjax(formData = null){
+    // Récupère les informations du produit dans la base de données
+    fetchProduct(formData = null){
 
-        return new Promise(resolve => {
+        return new Promise(resolve =>{
 
             if(formData !== null){
 
                 this._formData = formData;
     
-            }else{
-    
-                fetch('index.php?action=deleteAccount', {method: 'POST', body: this._formData})
-                .then(response => response.json())
-                .then(result => {
-    
-                    // Gestion des messages d'erreur
-                    if(result.error){
-    
-                        this._divResult.innerHTML = `<p class="error"> ${result.error} </p>`;
-                    }
-    
-                    // Gestion des messages de succès
-                    if(result.success){
-    
-                        this._divResult.innerHTML = `<p class="success"> ${result.success} </p>`;
-                        resolve(true);
-                    } 
-
-                    resolve(false);
-                })
             }
+    
+            fetch('index.php?action=fetchProduct', {method: 'POST', body: this._formData})
+            .then(response => response.json())
+            .then(result => resolve(result))
         })
-    }
-
-    // Redirige si le compte a bien été supprimé
-    async deleteAccount(){
-
-        const result = await this.deleteAccountAjax();
-        if(result){
-            window.location.replace('index.php?page=home');
-        }
-    }
+    }   
 }

@@ -23,7 +23,7 @@
             <div>
                 <img src="public/img/product/<?= $product['picture'] ?>" alt="<?= $product['name']; ?>">
 
-                <form method="post">
+                <form method="post" id="cartForm">
                     <div>
                         <select id="quantities" name="quantity">
                             <option data-price="<?= $product['price']; ?>" value="100">Sachet de 100 g</option>
@@ -35,7 +35,8 @@
                         <p id="price"><?= str_replace('.', ',', $product['price']); ?> € </p>
                     </div>
                     <div>
-                        <button class="btn" type="submit"> Ajouter au panier </button>
+                        <input type="hidden" name="productID" value="<?= intval($product['id']); ?>">
+                        <button class="btn" type="submit" id="addToCart"> Ajouter au panier </button>
                     </div>
                     <div>
                         <a href="#"><i class="fas fa-heart"></i>  Ajouter à ma liste d'entrée</a>
