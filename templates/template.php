@@ -22,6 +22,8 @@
         <script src="public/js/jquery.flexslider-min.js"></script>
         <script src="public/js/flexslider.js"></script>
         <link rel="stylesheet" href="public/css/flexslider.css">
+        <!-- JS Panier -->
+        <script src="public/js/cartManagement.js" type="module" defer></script>
         <!-- CSS -->
         <link rel="stylesheet" href="public/css/normalize.css">
         <link rel="stylesheet" href="public/css/style.css">
@@ -33,9 +35,9 @@
             <div class="container">
                 <div class="flex"> 
                     <a href="index.php?page=home"><img src="public/img/logo.png" alt="Logo du site Cup Of Tea"></a>
-                    <p class="panier">
-                        <span>Mon panier</span> <i class="fas fa-shopping-cart"></i> <span class="price">42,00€</span>
-                    </p>
+                    <a href="index.php?page=cart"><p class="panier">
+                        <span>Mon panier</span> <i class="fas fa-shopping-cart"></i> <span class="price" id="cartTotal"></span>
+                    </p></a>
                 </div>
 
                 <nav> 
@@ -84,30 +86,31 @@
             
                 <ul>
                     <li><h3> Commandez en ligne </h3></li>
-                    <li><a href="index.php?page=register">Première visite</a></li>
+                    <li><a href="index.php?page=register"> Première visite </a></li>
+                    <li><a href="index.php?page=cart"> Mon panier </a></li>      
                     <!-- <li><a href="#">Aide - FAQ</a></li> -->
                     <!-- <li><a href="#">Service client</a></li> -->
-                    <li><a href="#">Suivre ma commande</a></li>
+                    <li><a href="#"> Suivre ma commande </a></li>
                     <!-- <li><a href="#">Conditions générales de vente</a></li> -->
                     <!-- <li><a href="#">Informations légales</a></li> -->
                 </ul>
             
                 <ul>
                     <li><h3> Suivez-nous </h3></li>
-                    <li><a href="index.php?page=about">Notre histoire</a></li>
+                    <li><a href="index.php?page=about"> Notre histoire </a></li>
                     <!-- <li><a href="#">Nos boutiques</a></li> -->
-                    <li><a href="index.php?page=listing">Le thé de A à Z</a></li>
+                    <li><a href="index.php?page=listing"> Le thé de A à Z </a></li>
                     <!-- <li><a href="#">Espace Clients Professionnels</a></li> -->
                 </ul>
-        </nav>
-            
-        <div>
-            <div class="container">
-                <img src="public/img/big.png" alt="logo3wa"/>
-                <p>Cet exercice de <a href="https://3wa.fr/">3W Academy</a> est mis à disposition pour l'usage personnel des étudiants. Pas de Rediffusion- Attribution- Pas d'Utilisation Commerciale - Pas de modification - International" pour l'usage personnel des étudiants.<br/>
-                Pas de Rediffusion- Attribution- Pas d'Utilisation Commerciale - Pas de modification - International. autorisations au-delà du champ de cette licence peuvent être obtenues auprès de <a href="mailto:contact@3wa.fr">contact@3wa.fr</a>. Les maquettes ont été réalisées par Justine Muller.</p>
+            </nav>
+                
+            <div>
+                <div class="container">
+                    <img src="public/img/big.png" alt="logo3wa"/>
+                    <p>Cet exercice de <a href="https://3wa.fr/">3W Academy</a> est mis à disposition pour l'usage personnel des étudiants. Pas de Rediffusion- Attribution- Pas d'Utilisation Commerciale - Pas de modification - International" pour l'usage personnel des étudiants.<br/>
+                    Pas de Rediffusion- Attribution- Pas d'Utilisation Commerciale - Pas de modification - International. autorisations au-delà du champ de cette licence peuvent être obtenues auprès de <a href="mailto:contact@3wa.fr">contact@3wa.fr</a>. Les maquettes ont été réalisées par Justine Muller.</p>
+                </div>
             </div>
-        </div>
         </footer>
     </body>
 </html>

@@ -45,6 +45,13 @@ if(array_key_exists('action', $_GET) && !empty($_POST)){
             echo json_encode($result);
 
         break;
+
+        // Récupérer les informations d'un produit
+        case 'fetchProduct':
+        
+            echo json_encode($productMod->fetchProduct($_POST['productID']));
+
+        break;
     }
 
 }else{
@@ -155,6 +162,14 @@ if(array_key_exists('action', $_GET) && !empty($_POST)){
 
                     $tools->redirect('index.php?page=login');
                 }
+
+            break;
+
+            // Page 'Mon panier'
+            case 'cart':
+
+                $path = 'cart.php';
+                $title = 'Mon panier';
 
             break;
         }

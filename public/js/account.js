@@ -6,14 +6,6 @@ import Ajax from './class/Ajax.js';
 const display = new Display();
 const ajax = new Ajax();
 
-async function asyncDeleteAccount(){
-
-    const result = await ajax.deleteAccount();
-    if(result){
-        window.location.replace('index.php?page=home');
-    }
-}
-
 document.addEventListener('DOMContentLoaded', ()=>{
 
     // Gestion des onglets / affichage

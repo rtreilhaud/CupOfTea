@@ -131,14 +131,18 @@ article.flex p{
     background-color: rgba(176,144,103,0.75)
 }
 
-.img-left{
+.float-left{
     float:left;
     margin-right: 15px;
 }
 
-.img-right{
+.float-right{
     float:right;
     margin-left: 15px;
+}
+
+.clear{
+    clear: both;
 }
 
 .none{
@@ -194,13 +198,14 @@ header div.flex{
 
 header div.flex a{
     display: inline-block;
-    margin-top: 10rem;
+    margin-top: 4rem;
 }
 
 /***** Panier *****/
 
 header .panier{
     background-color: var(--primary-color);
+    color: white;
     margin: 0;
     position: fixed;
     top: 6rem;
@@ -214,7 +219,7 @@ header .panier {
     padding: 1rem 1.5rem;
 }
 
-header .panier span:first-child{
+header .panier span:first-of-type{
     display: none;
 }
 
@@ -521,6 +526,21 @@ main > h1{
     margin: 0;
 }
 
+/********** Page 'Mon panier' (cart) **********/
+
+#cartPage > p{
+    text-align: right;
+}
+
+#cartPage .btn{
+    margin-right: 2rem;
+}
+
+#cartPage .productLink{
+    color: inherit;
+    text-decoration: underline;
+}
+
 /********************************************************
                         FOOTER
 ********************************************************/
@@ -646,7 +666,7 @@ footer img{
         padding: 0 34px;
     }
     
-    header p.panier span{
+    header p.panier span:first-of-type{
         display: inline;
         font-size: 2rem;
     }
@@ -734,6 +754,13 @@ footer img{
     #about section .img-right{
         margin-bottom: 0;
         width: 50%;
+    }
+
+    /***** Page 'Mon panier' (cart) *****/
+
+    #cartPage div.flex{
+        flex-direction: row;
+        justify-content: space-around;
     }
 
     /***** FOOTER ******/
