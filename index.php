@@ -1,10 +1,16 @@
 <?php
 
 // Récupere mes fichiers de fonction
-require_once 'controller/ToolController.php';
-require_once 'controller/FormController.php';
-require_once 'models/Category.php';
-require_once 'models/Product.php';
+require_once 'class/core/Connect.php';
+require_once 'class/controller/ToolController.php';
+require_once 'class/controller/FormController.php';
+require_once 'class/models/Category.php';
+require_once 'class/models/Product.php';
+require_once 'class/models/User.php';
+
+// Nomme les namespace utilisés
+use App\Controller\{ToolController, FormController};
+use App\Model\{Category, Product, User};
 
 // Instanciation des mes classes
 $tools = new ToolController();

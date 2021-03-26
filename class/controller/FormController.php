@@ -1,9 +1,9 @@
 <?php
+namespace App\Controller;
 
 // Récupère les modèles nécessaires
-require_once 'controller/ToolController.php';
-require_once 'models/User.php';
-
+use App\Controller\ToolController;
+use App\Model\User;
 
 class FormController{
 
