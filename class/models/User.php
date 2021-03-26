@@ -1,7 +1,7 @@
 <?php
-
-// Récupère ma connexion à la base de données
-require_once 'core/Connect.php';
+namespace App\model;
+use App\Core\Connect;
+use \PDO;
 
 class User extends Connect{
 
