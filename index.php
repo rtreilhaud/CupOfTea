@@ -1,16 +1,14 @@
 <?php
 
-// Récupere mes fichiers de fonction
-require_once 'class/core/Connect.php';
-require_once 'class/controller/ToolController.php';
-require_once 'class/controller/FormController.php';
-require_once 'class/models/Category.php';
-require_once 'class/models/Product.php';
-require_once 'class/models/User.php';
+// Récupère mon Autoloader
+require_once 'class/Autoloader.php';
 
 // Nomme les namespace utilisés
+use App\Autoloader;
 use App\Controller\{ToolController, FormController};
-use App\Model\{Category, Product, User};
+use App\Models\{Category, Product, User};
+
+Autoloader::register();
 
 // Instanciation des mes classes
 $tools = new ToolController();
