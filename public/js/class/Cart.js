@@ -143,6 +143,10 @@ export default class Cart{
                 aItem.href = `index.php?page=product&pID=${cart[item].id}`;
                 aItem.textContent = cart[item].name;
                 aItem.classList.add('productLink');
+
+                // Affichage du prix unitaire
+                const span = document.createElement('span');
+                span.textContent = ` (Unité: ${this.displayPrice(cart[item].price, true)}) `
                 
                 // Lien pour supprimer l'élément
                 const aLi = document.createElement('a');
@@ -155,7 +159,7 @@ export default class Cart{
                 spanLi.classList.add('float-right');
 
                 // Ajout de l'élément à la liste
-                li.append(aItem, aLi, spanLi);
+                li.append(aItem, span, aLi, spanLi);
                 ul.appendChild(li);
             }
 
@@ -188,7 +192,7 @@ export default class Cart{
     displayPrice(item, total = false){
 
         // Si total = true, item correspond au total, sinon il faut le calculer
-        total = (total) ? item.toFixed(2) : this.calculateTotal(item).toFixed(2);
+        total = (total) ? Number(item).toFixed(2) : this.calculateTotal(item).toFixed(2);
 
         // Transforme en chaîne de caractères pour l'afficher
         let strTotal = String(total).replace('.',',');

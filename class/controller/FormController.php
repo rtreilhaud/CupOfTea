@@ -2,8 +2,11 @@
 namespace App\Controller;
 
 // Récupère les modèles nécessaires
+use App\Autoloader;
 use App\Controller\ToolController;
 use App\Models\User;
+
+Autoloader::register();
 
 class FormController{
 
@@ -224,7 +227,7 @@ class FormController{
         }
     
         // Traduction des champs du message d'erreur
-        $this->_message['error'] = str_replace(array_keys($post), ['Prénom','Nom','Téléphone','Adresse'], $this->_message['error']);
+        $this->_message['error'] = str_replace(array_keys($post), ['ID', 'Prénom','Nom','Téléphone','Adresse'], $this->_message['error']);
 
         return ['error' => $this->_message['error'],
                 'success' => $this->_message['success'],

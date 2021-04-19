@@ -32,7 +32,6 @@ export default class Ajax{
         if(formData !== null){
 
             this._formData = formData;
-
         }
 
         fetch('index.php?action=updateProfile', {method: 'POST', body: this._formData})

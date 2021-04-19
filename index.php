@@ -5,17 +5,12 @@ require_once 'class/Autoloader.php';
 
 // Nomme les namespace utilisés
 use App\Autoloader;
-use App\Controller\{ToolController, FormController};
-use App\Models\{Category, Product, User};
+use App\Controller\{ToolController, ViewController, AjaxController};
 
 Autoloader::register();
 
 // Instanciation des mes classes
 $tools = new ToolController();
-$formCTRL = new FormController();
-$categoryMod = new Category();
-$productMod = new Product();
-$userMod = new User();
 
 // Démarrage de la session
 session_start();
@@ -24,165 +19,15 @@ session_start();
 // Gestion des actions / requêtes AJAX
 if(array_key_exists('action', $_GET) && !empty($_POST)){
 
-    switch($_GET['action']){
+    new AjaxController($_GET['action'], $_POST);
 
-        // Modifier les informations du profil
-        case 'updateProfile':
+// Gestions des pages
+}else if(array_key_exists('page', $_GET)){
 
-            $result = $formCTRL->checkProfileUpdate($_POST);
-            echo json_encode($result);
+    new ViewController($_GET['page']);
 
-        break;
-
-        // Modifier le mot de passe
-        case 'updatePassword':
-
-            $result = $formCTRL->checkPasswordUpdate($_POST);
-            echo json_encode($result);
-
-        break;
-
-        // Modifier le mot de passe
-        case 'deleteAccount':
-
-            $result = $formCTRL->checkAccountDeletion($_POST);
-            echo json_encode($result);
-
-        break;
-
-        // Récupérer les informations d'un produit
-        case 'fetchProduct':
-        
-            echo json_encode($productMod->fetchProduct($_POST['productID']));
-
-        break;
-    }
-
+// Redirection vers l'Accueil
 }else{
 
-    // Gestion des pages
-    if(array_key_exists('page', $_GET)){
-
-        switch($_GET['page']){
-
-            // Page d'accueil
-            case 'home':
-
-                $path = 'home.php';
-                $title= 'Accueil';
-
-            break;
-
-            // Page 'Thés'
-            case 'listing':
-
-                $path = 'listing.php';
-                $title = 'Thés';
-
-                // Récupère les catégories de thé
-                $categories = $categoryMod->fetchAllCategories();
-            
-            break;
-
-            // Page 'Produit'
-            case 'product':
-
-                $path = 'product.php';
-
-                if(array_key_exists('pID', $_GET)){
-
-                    // Récupère le thé correspondant à l'ID
-                    $product = $productMod->fetchProduct($_GET['pID']);
-
-                    if($product === false){
-                        $tools->redirect('index.php?page=listing');
-                    }else{
-                        $title = $product['name'];
-                    }
-                    
-                }else{
-
-                    $tools->redirect('index.php?page=listing');
-                }
-            
-            break;
-
-            // Page 'Notre histoire'
-            case 'about':
-
-                $path = 'about.php';
-                $title = 'Notre histoire';
-
-            break;
-
-            // Page 'Inscription'
-            case 'register':
-
-                $path = 'register.php';
-                $title = 'Inscription';
-
-                if($_POST){
-
-                    // Check the register form
-                    $message = $formCTRL->checkRegisterForm($_POST);
-                }
-                
-            break;
-
-            // Page 'Connexion'
-            case 'login':
-
-                $path = 'login.php';
-                $title = 'Connexion';
-
-                if($_POST){
-
-                    var_dump($_POST);
-                    // Check the login
-                    $message = $formCTRL->checkLogin($_POST);
-                }
-
-            break;
-
-            // Déconnexion
-            case 'logout':
-
-                session_destroy();
-                $tools->redirect('index.php?page=home');
-
-            break;
-
-            // Page 'Mon compte'
-            case 'account':
-
-                $path = 'account.php';
-                $title = 'Mon compte';
-
-                if(array_key_exists('email', $_SESSION)){
-
-                    $user = $userMod->fetchUser($_SESSION['email']);
-
-                }else{
-
-                    $tools->redirect('index.php?page=login');
-                }
-
-            break;
-
-            // Page 'Mon panier'
-            case 'cart':
-
-                $path = 'cart.php';
-                $title = 'Mon panier';
-
-            break;
-        }
-
-    }else{
-
-        $tools->redirect('index.php?page=home');
-    }
-
-    // J'affiche la page
-    require 'templates/template.php';
+    $tools->redirect('index.php?page=home');
 }

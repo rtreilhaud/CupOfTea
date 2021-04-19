@@ -51,6 +51,10 @@ a{
     text-decoration: none;
 }
 
+a:hover, .btn:hover, #account li:hover{
+    cursor: pointer;
+}
+
 /***** Formulaires *****/
 
 form{
@@ -530,10 +534,6 @@ main > h1{
 
 #cartPage > p{
     text-align: right;
-}
-
-#cartPage .btn{
-    margin-right: 2rem;
 }
 
 #cartPage .productLink{
