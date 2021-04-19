@@ -63,7 +63,7 @@
                 </p>
                 <p>A partir de</p>
                 <p class="price">8,50€</p>
-                <a class="btn" href="#"> Voir ce produit </a>
+                <a class="btn" href="index.php?page=product&pID=1"> Voir ce produit </a>
             </article>
 
             <article>
@@ -77,7 +77,7 @@
                 </p>
                 <p>A partir de</p>
                 <p class="price">7,60€</p>
-                <a class="btn" href="#"> Voir ce produit</a>
+                <a class="btn" href="index.php?page=product&pID=2"> Voir ce produit</a>
             </article>
 
             <article>
@@ -91,7 +91,7 @@
                 </p>
                 <p>A partir de</p>
                 <p class="price">9,00€</p>
-                <a class="btn" href="index.php?page=product">voir ce produit</a>
+                <a class="btn" href="index.php?page=product&pID=3">voir ce produit</a>
             </article>
         </div>
     </section>

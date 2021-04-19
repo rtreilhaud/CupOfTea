@@ -52,6 +52,4 @@ class ToolController{
             return false;
         }
     }
-
-
 }
