@@ -3,7 +3,7 @@ namespace App\Controller;
 
 // Récupère les modèles nécessaires
 use App\Controller\ToolController;
-use App\Model\User;
+use App\Models\User;
 
 class FormController{
 
