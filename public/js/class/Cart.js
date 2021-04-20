@@ -146,7 +146,7 @@ export default class Cart{
 
                 // Affichage du prix unitaire
                 const span = document.createElement('span');
-                span.textContent = ` (Unité: ${this.displayPrice(cart[item].price, true)}) `
+                span.textContent = ` (Unité : ${this.displayPrice(cart[item].price, true)}) `
                 
                 // Lien pour supprimer l'élément
                 const aLi = document.createElement('a');
@@ -172,9 +172,10 @@ export default class Cart{
             div.classList.add('flex');
 
             // Ajout d'un bouton pour commander
-            const aCommand = document.createElement('a');
-            aCommand.classList.add('btn');
-            aCommand.textContent = 'Commander'
+            const aOrder = document.createElement('a');
+            aOrder.classList.add('btn');
+            aOrder.textContent = 'Commander';
+            aOrder.id = 'orderBtn';
 
             // Ajout d'un bouton pour vider le panier
             const clearBtn = document.createElement('a');
@@ -183,7 +184,7 @@ export default class Cart{
             clearBtn.id = 'clearBtn';
 
             // Affiche la page
-            div.append(aCommand, clearBtn);
+            div.append(aOrder, clearBtn);
             page.append(ul, pTotal, div);
         }
     }

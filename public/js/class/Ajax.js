@@ -1,10 +1,12 @@
+import Cart from './Cart.js';
+
 export default class Ajax{
 
-    constructor(form){
+    constructor(form, displayID = 'message'){
 
         this._form = form;
         this._formData = new FormData(form);
-        this._divResult = document.getElementById('message');
+        this._divResult = document.getElementById(displayID);
     }
 
     // Déclare le formulaire
@@ -135,7 +137,6 @@ export default class Ajax{
             if(formData !== null){
 
                 this._formData = formData;
-    
             }
     
             fetch('index.php?action=fetchProduct', {method: 'POST', body: this._formData})
@@ -143,4 +144,22 @@ export default class Ajax{
             .then(result => resolve(result))
         })
     }   
+
+    // Enregistre la commande dans la base de données
+    orderCart(cart = new Cart()){
+
+        this._formData = new FormData();
+        this._formData.append('total', cart.total);
+
+        fetch('index.php?action=orderCart', {method: 'POST', body: this._formData})
+        .then(response => response.json())
+        .then(result => {
+            
+            // Gestion des messages d'erreur
+            if(result.error){
+
+                this._divResult.innerHTML = `<p class="error"> ${result.error} </p>`;
+            }
+        })
+    }
 }

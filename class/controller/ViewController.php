@@ -126,7 +126,8 @@ class ViewController{
 
         if($_POST){
 
-            // Check the register form
+            var_dump($_POST);
+            // Vérifie le formulaire d'inscription
             $data['message'] = $this->_formCTRL->checkRegisterForm($_POST);
         }
 
@@ -144,7 +145,7 @@ class ViewController{
 
         if($_POST){
 
-            // Check the login
+            // Vérifie le formulaire de connexion
             $data['message'] = $this->_formCTRL->checkLogin($_POST);
         }
 
