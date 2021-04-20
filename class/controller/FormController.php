@@ -37,7 +37,7 @@ class FormController{
         }else{
 
             // On prépare l'URL pour vérifier le recaptcha
-            $url = "https://www.google.com/recaptcha/api/siteverify?secret=6LduebEaAAAAAJeREYPytjlsxKJyeQKDTCaGlmQE&response={$post['recaptchaResponse']}";
+            $url = "https://www.google.com/recaptcha/api/siteverify?secret='secretkey'&response={$post['recaptchaResponse']}";
 
             // On vérifie si curl est installé
             if(function_exists('curl_version')){
