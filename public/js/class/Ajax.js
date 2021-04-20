@@ -148,18 +148,26 @@ export default class Ajax{
     // Enregistre la commande dans la base de données
     orderCart(cart = new Cart()){
 
+        console.log(cart)
         this._formData = new FormData();
         this._formData.append('total', cart.total);
+        this._formData.append('cart', JSON.stringify(cart.cart));
 
         fetch('index.php?action=orderCart', {method: 'POST', body: this._formData})
         .then(response => response.json())
         .then(result => {
-            
+
             // Gestion des messages d'erreur
             if(result.error){
 
                 this._divResult.innerHTML = `<p class="error"> ${result.error} </p>`;
             }
+
+            // Gestion des messages de succès
+            if(result.success){
+
+                this._divResult.innerHTML = `<p class="success"> ${result.success} </p>`;
+            } 
         })
     }
 }

@@ -39,7 +39,7 @@ export default class Cart{
         const product = {name: item.name,
                          id: item.id,
                          price: item.price,
-                         stock: item.quantity,
+                         stock: item.stock,
                          quantity: quantity
                         }
         // Ajout le produit au panier

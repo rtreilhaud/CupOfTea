@@ -126,7 +126,6 @@ class ViewController{
 
         if($_POST){
 
-            var_dump($_POST);
             // Vérifie le formulaire d'inscription
             $data['message'] = $this->_formCTRL->checkRegisterForm($_POST);
         }
