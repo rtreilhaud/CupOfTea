@@ -45,6 +45,13 @@ document.addEventListener('DOMContentLoaded',()=>{
         }
     })
 
+    // Bouton pour commander
+    const orderBtn = document.getElementById('orderBtn');
+    if(orderBtn !== null){
+
+        orderBtn.addEventListener('click', ()=> ajax.orderCart());
+    }
+
     // Bouton pour vider le panier
     const clearBtn = document.getElementById('clearBtn');
     if(clearBtn !== null){

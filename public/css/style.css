@@ -541,6 +541,12 @@ main > h1{
     text-decoration: underline;
 }
 
+#cartPage + #message{
+    background-color: var(--bg-section);
+    text-align: center;
+    margin: 0;
+}
+
 /********************************************************
                         FOOTER
 ********************************************************/

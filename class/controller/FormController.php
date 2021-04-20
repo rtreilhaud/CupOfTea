@@ -26,51 +26,94 @@ class FormController{
         return ($psw === $psw2) ? true : false;
     }
 
-    public function checkRegisterForm(array $post):array{
+    public function checkRegisterForm(array $post){
 
-        if(!empty($post['email']) && !empty($post['psw']) && !empty($post['psw2'])){
+        // On vérifie si le recaptcha n'est pas vide
+        if(empty($post['recaptchaResponse'])){
 
-            // Vérifie que l'adresse email est au bon format
-            if(!filter_var($post['email'], FILTER_VALIDATE_EMAIL)){
-
-                $this->_message['error'] = "Votre email n'est pas une adresse valide";
-            
-            // Si c'est le cas
-            }else{
-
-                // Vérifie si l'utilisateur existe
-                if($this->_userMod->fetchUser($post['email']) !== false){
-
-                    $this->_message['error'] = 'Cet email est déjà utilisé, veuillez en choisir un autre';
-
-                // S'il n'existe pas
-                }else{
-
-                    // Vérifie si le mot de passe est confirmé
-                    if($this->confirmPassword($post['psw'], $post['psw2'])){
-
-                        // Ajoute l'utilisateur
-                        $this->_userMod->addUser($post['email'], password_hash($post['psw'], PASSWORD_DEFAULT));
-
-                        // Message de confirmation
-                        $this->_message['success'] = 'Bienvenue, votre inscription est terminée';
-
-                        // Redirection vers la page de connexion
-                        $this->_tools->redirect('index.php?page=login');
-
-                    }else{
-
-                        $this->_message['error'] = 'Le mot de passe de confirmation est différent du mot de passe' ;
-                    }
-                }
-            }
+            // Redirection vers le formulaire
+            $this->_tools->redirect('index.php?page=register');
 
         }else{
 
-            $this->_message['error'] = 'Veuillez remplir les champs demandés';
-        }
+            // On prépare l'URL pour vérifier le recaptcha
+            $url = "https://www.google.com/recaptcha/api/siteverify?secret=6LduebEaAAAAAJeREYPytjlsxKJyeQKDTCaGlmQE&response={$post['recaptchaResponse']}";
 
-        return $this->_message;
+            // On vérifie si curl est installé
+            if(function_exists('curl_version')){
+
+                $curl = curl_init($url);
+                curl_setopt($curl, CURLOPT_HEADER, false);
+                curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($curl, CURLOPT_TIMEOUT, 1);
+                curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+                $response = curl_exec($curl);
+
+            }else{
+
+                // On utilisera file_get_contents
+                $response = file_get_contents($url);
+            }
+
+            // On vérifie qu'on a une réponse 
+            if(empty($response) || is_null($response)){
+
+                // Redirection vers le formulaire
+                $this->_tools->redirect('index.php?page=register');
+
+            }else{
+
+                $data = json_decode($response);
+
+                // Si le recaptcha est vérifié, je vérifie mon formulaire
+                if($data->success){
+
+                    if(!empty($post['email']) && !empty($post['psw']) && !empty($post['psw2'])){
+
+                        // Vérifie que l'adresse email est au bon format
+                        if(!filter_var($post['email'], FILTER_VALIDATE_EMAIL)){
+            
+                            $this->_message['error'] = "Votre email n'est pas une adresse valide";
+                        
+                        // Si c'est le cas
+                        }else{
+            
+                            // Vérifie si l'utilisateur existe
+                            if($this->_userMod->fetchUser($post['email']) !== false){
+            
+                                $this->_message['error'] = 'Cet email est déjà utilisé, veuillez en choisir un autre';
+            
+                            // S'il n'existe pas
+                            }else{
+            
+                                // Vérifie si le mot de passe est confirmé
+                                if($this->confirmPassword($post['psw'], $post['psw2'])){
+            
+                                    // Ajoute l'utilisateur
+                                    $this->_userMod->addUser($post['email'], password_hash($post['psw'], PASSWORD_DEFAULT));
+            
+                                    // Message de confirmation
+                                    $this->_message['success'] = 'Bienvenue, votre inscription est terminée';
+            
+                                    // Redirection vers la page de connexion
+                                    $this->_tools->redirect('index.php?page=login');
+            
+                                }else{
+            
+                                    $this->_message['error'] = 'Le mot de passe de confirmation est différent du mot de passe' ;
+                                }
+                            }
+                        }
+            
+                    }else{
+            
+                        $this->_message['error'] = 'Veuillez remplir les champs demandés';
+                    }
+            
+                    return $this->_message;
+                }
+            }
+        }
     }
 
     public function checkLogin(array $post):array{
