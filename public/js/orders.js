@@ -67,7 +67,12 @@ document.addEventListener("DOMContentLoaded",()=>{
                 // On gère le payement
                 stripe.Btn.addEventListener('click', ()=>{
 
-                    stripe.handlePayment(e.target.dataset.total, e.target.dataset.order);
+                    stripe.handlePayment(e.target.dataset.total, e.target.dataset.order)
+                    .then(redirect => {
+
+                        // Recharge la page
+                        window.location.replace(redirect);
+                    })
                 })
             }
         }
