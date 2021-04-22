@@ -51,6 +51,7 @@
                             <li><a href="index.php?page=login"> Connexion </a></li>
                         <?php else: ?>
                             <li><a href="index.php?page=account"> Mon compte </a></li>
+                            <li><a href="index.php?page=orders"> Mes commandes </a></li>
                             <li><a href="index.php?page=logout"> Déconnexion </a></li>
                         <?php endif; ?>
                     </ul>
@@ -87,10 +88,10 @@
                 <ul>
                     <li><h3> Commandez en ligne </h3></li>
                     <li><a href="index.php?page=register"> Première visite </a></li>
-                    <li><a href="index.php?page=cart"> Mon panier </a></li>      
+                    <li><a href="index.php?page=cart"> Mon panier </a></li>        
                     <!-- <li><a href="#">Aide - FAQ</a></li> -->
                     <!-- <li><a href="#">Service client</a></li> -->
-                    <li><a href="#"> Suivre ma commande </a></li>
+                    <li><a href="index.php?page=orders"> Suivre ma commande </a></li>
                     <!-- <li><a href="#">Conditions générales de vente</a></li> -->
                     <!-- <li><a href="#">Informations légales</a></li> -->
                 </ul>

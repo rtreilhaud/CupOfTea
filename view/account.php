@@ -18,6 +18,7 @@
             <p> <b>Téléphone</b> : <span id="tel"><?= $user['tel'] ?></span> </p>
             <p> <b>Adresse</b> : <span  id="address"><?= $user['address'] ?></span> </p>
         </article>  
+        <a href='index.php?page=orders'> Consulter mes factures </a>
     </section>
 
     <section id="s-account2" class="none">

@@ -1,10 +1,13 @@
+// Importation des classes
 import LocalStorage from './LocalStorage.js';
+import Display from './Display.js';
 
 export default class Cart{
 
     constructor(cartName = 'cart', priceElement = document.getElementById('cartTotal'), cartPage = document.getElementById('cartPage')){
 
         this.LS = new LocalStorage();
+        this.Display = new Display();
         this.cartName = cartName;
         this.cart = this.checkCart(cartName);
         this.total = this.calculateTotalCart(this.cart);
@@ -39,7 +42,7 @@ export default class Cart{
         const product = {name: item.name,
                          id: item.id,
                          price: item.price,
-                         stock: item.quantity,
+                         stock: item.stock,
                          quantity: quantity
                         }
         // Ajout le produit au panier
@@ -72,7 +75,7 @@ export default class Cart{
     }
 
     // Vide le panier
-    clearCart(cartName = this.cartName){
+    clearCart(cartName = this.cartName, reload = true){
 
         // Supprime le panier du local storage
         this.LS.removeData(cartName);
@@ -81,15 +84,17 @@ export default class Cart{
         this.cart = this.checkCart(cartName);
         this.total = this.calculateTotalCart(this.cart);   
         
-        // Recharge la page
-        window.location.reload();
+        // Recharge la page si demandé
+        if(reload){
+            window.location.reload();
+        }
     }
 
     // Calcule le prix selon la quantité du produit voulue
     calculateTotal(item){
 
         // Multiplie la quantité voulue par le prix d'un produit
-        return item.quantity * item.price
+        return this.Display.calculateTotal(item.quantity, item.price);
     }
 
     // Calcule le total du panier
@@ -119,7 +124,7 @@ export default class Cart{
 
             // Titre et lien de redirection
             page.innerHTML = '<h1> Votre panier est vide </h1>';
-            page.innerHTML += '<p><a href="index.php?page=listing"> Consultez nos thés </a></p>';
+            page.innerHTML += '<a href="index.php?page=listing"> Consultez nos thés </a>';
 
         // S'il y a des produits dans le panier
         }else{
@@ -136,36 +141,16 @@ export default class Cart{
 
                 // Création de l'élément
                 const li = document.createElement('li');
-                li.textContent = `${cart[item].quantity} x ` ;
-
-                // Lien pour voir le produit
-                const aItem = document.createElement('a');
-                aItem.href = `index.php?page=product&pID=${cart[item].id}`;
-                aItem.textContent = cart[item].name;
-                aItem.classList.add('productLink');
-
-                // Affichage du prix unitaire
-                const span = document.createElement('span');
-                span.textContent = ` (Unité : ${this.displayPrice(cart[item].price, true)}) `
-                
-                // Lien pour supprimer l'élément
-                const aLi = document.createElement('a');
-                aLi.textContent = ' Supprimer';
-                aLi.dataset.name = item;
-
-                // Prix du sous-total
-                const spanLi = document.createElement('span');
-                spanLi.textContent = this.displayPrice(cart[item]);
-                spanLi.classList.add('float-right');
-
+                li.innerHTML = this.Display.displayProductLine(cart[item].id, cart[item].name, cart[item].quantity, cart[item].price, true).innerHTML;
+               
                 // Ajout de l'élément à la liste
-                li.append(aItem, span, aLi, spanLi);
                 ul.appendChild(li);
             }
 
             // Affichage du total du panier
             const pTotal = document.createElement('p');
             pTotal.textContent = `Total = ${this.displayTotalPrice()}`;
+            pTotal.classList.add('total');
 
             // Ajout d'une zone pour les boutons
             const div = document.createElement('div');
@@ -176,6 +161,7 @@ export default class Cart{
             aOrder.classList.add('btn');
             aOrder.textContent = 'Commander';
             aOrder.id = 'orderBtn';
+            aOrder.dataset.total = this.displayTotalPrice();
 
             // Ajout d'un bouton pour vider le panier
             const clearBtn = document.createElement('a');
@@ -195,23 +181,7 @@ export default class Cart{
         // Si total = true, item correspond au total, sinon il faut le calculer
         total = (total) ? Number(item).toFixed(2) : this.calculateTotal(item).toFixed(2);
 
-        // Transforme en chaîne de caractères pour l'afficher
-        let strTotal = String(total).replace('.',',');
-        let euro;
-        if(strTotal.split(',')[1] === undefined){
-
-            euro = ',00 €';
-
-        }else if(strTotal.split(',')[1].length === 1){
-
-            euro = '0 €';
-
-        }else{
-
-            euro = ' €';
-        }
-
-        return strTotal + euro;
+        return this.Display.displayPrice(total);
     }
 
     // Affiche le prix total du panier

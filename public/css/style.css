@@ -170,6 +170,11 @@ article.flex p{
     color: red;
 }
 
+.productLink{
+    color: inherit;
+    text-decoration: underline;
+}
+
 .active{
     opacity: 0.75;
     box-shadow: inset 5px 5px rgb(134, 110, 78), inset -5px -5px rgb(134, 110, 78);
@@ -181,6 +186,19 @@ article.flex p{
     font-weight: bold;
 }
 
+.total{
+    text-align: right;
+    margin: 0;
+    font-weight: bold;
+}
+
+/***** ID *****/
+
+/* Formulaire de carte pour Stripe */
+#cardForm{ 
+    width: max-content;
+    margin: auto;
+}
 
 /********************************************************
                         HEADER
@@ -531,15 +549,6 @@ main > h1{
 }
 
 /********** Page 'Mon panier' (cart) **********/
-
-#cartPage > p{
-    text-align: right;
-}
-
-#cartPage .productLink{
-    color: inherit;
-    text-decoration: underline;
-}
 
 #cartPage + #message{
     background-color: var(--bg-section);

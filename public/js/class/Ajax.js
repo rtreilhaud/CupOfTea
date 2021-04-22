@@ -31,11 +31,13 @@ export default class Ajax{
     // Envoie le formulaire d'informations pour mettre à jour le profil
     updateProfile(formData = null){
 
+        // Préparation des données à envoyer
         if(formData !== null){
 
             this._formData = formData;
         }
 
+        // Envoie la requête Ajax
         fetch('index.php?action=updateProfile', {method: 'POST', body: this._formData})
         .then(response => response.json())
         .then(result => {
@@ -63,12 +65,13 @@ export default class Ajax{
     // Envoie le formulaire de mot de passe pour le mettre à jour
     updatePassword(formData = null){
 
+        // Préparation des données à envoyer
         if(formData !== null){
 
             this._formData = formData;
-
         }
 
+        // Envoie la requête Ajax
         fetch('index.php?action=updatePassword', {method: 'POST', body: this._formData})
         .then(response => response.json())
         .then(result => {
@@ -87,17 +90,39 @@ export default class Ajax{
         })
     }
 
+    // Envoie la requête pour modifier le statut d'une commande
+    updateOrderStatus(orderID, newStatus){
+
+        // Préparation des données à envoyer
+        this._formData = new FormData();
+        this._formData.append('orderID', orderID);
+        this._formData.append('status', newStatus);
+
+        // Envoie la requête Ajax
+        fetch('index.php?action=updateOrderStatus', {method: 'POST', body: this._formData})
+        .then(response => response.json())
+        .then(result => {
+
+            // Gestion des messages d'erreur
+            if(result.error){
+
+                this._divResult.innerHTML = `<p class="error"> ${result.error} </p>`;
+            }
+        })
+    }
+
     // Envoie le mot de passe pour supprimer le compte
     deleteAccountAjax(formData = null){
 
         return new Promise(resolve => {
 
+            // Préparation des données à envoyer
             if(formData !== null){
 
                 this._formData = formData;
-    
             }
     
+            // Envoie la requête Ajax
             fetch('index.php?action=deleteAccount', {method: 'POST', body: this._formData})
             .then(response => response.json())
             .then(result => {
@@ -112,7 +137,7 @@ export default class Ajax{
                 if(result.success){
 
                     this._divResult.innerHTML = `<p class="success"> ${result.success} </p>`;
-                    resolve(true);
+                    resolve(true); // Résolution de la requête
                 } 
 
                 resolve(false);
@@ -134,12 +159,32 @@ export default class Ajax{
 
         return new Promise(resolve =>{
 
+            // Préparation des données à envoyer
             if(formData !== null){
 
                 this._formData = formData;
             }
     
+            // Envoie la requête Ajax
             fetch('index.php?action=fetchProduct', {method: 'POST', body: this._formData})
+            .then(response => response.json())
+            .then(result => resolve(result)) // Résolution de la requête
+        })
+    }   
+
+    // Récupère les informations d'une commande dans la base de données
+    fetchOrderDetails(formData = null){
+
+        return new Promise(resolve =>{
+
+            // Préparation des données à envoyer
+            if(formData !== null){
+
+                this._formData = formData;
+            }
+    
+            // Envoie la requête Ajax
+            fetch('index.php?action=fetchOrderDetails', {method: 'POST', body: this._formData})
             .then(response => response.json())
             .then(result => resolve(result))
         })
@@ -148,18 +193,63 @@ export default class Ajax{
     // Enregistre la commande dans la base de données
     orderCart(cart = new Cart()){
 
+        // Préparation des données à envoyer
         this._formData = new FormData();
         this._formData.append('total', cart.total);
+        this._formData.append('cart', JSON.stringify(cart.cart));
 
-        fetch('index.php?action=orderCart', {method: 'POST', body: this._formData})
-        .then(response => response.json())
-        .then(result => {
-            
-            // Gestion des messages d'erreur
-            if(result.error){
+        return new Promise((resolve, reject) =>{
 
-                this._divResult.innerHTML = `<p class="error"> ${result.error} </p>`;
-            }
+            // Envoie la requête Ajax
+            fetch('index.php?action=orderCart', {method: 'POST', body: this._formData})
+            .then(response => response.json())
+            .then(result => {
+
+                // Gestion des messages d'erreur
+                if(result.error){
+
+                    this._divResult.innerHTML = `<p class="error"> ${result.error} </p>`;
+                    reject();
+                }
+
+                // Gestion des messages de succès
+                if(result.success){
+
+                    this._divResult.innerHTML = `<p class="success"> ${result.success} </p>`;
+                    resolve(result.orderID);
+                } 
+            })
+        })
+    }
+
+    // Envoie une intention de paiement à Stripe
+    sendPaymentIntent(total){
+
+        // Préparation des données à envoyer
+        this._formData = new FormData();
+        this._formData.append('total', total);
+
+        return new Promise(resolve =>{
+
+            // Envoie la requête Ajax
+            fetch('index.php?action=sendPaymentIntent', {method: 'POST', body: this._formData})
+            .then(response => response.json())
+            .then(result => {
+
+                // Gestion des messages d'erreur
+                if(result.error){
+
+                    this._divResult.innerHTML = `<p class="error"> ${result.error} </p>`;
+                }
+
+                // Gestion de l'intention de paiement
+                if(result.intent){
+
+                    const cardBtn = document.getElementById('cardBtn');
+                    cardBtn.dataset.secret = result.intent.client_secret;
+                    resolve(result.intent.client_secret); // Résolution de la requête
+                }
+            })
         })
     }
 }

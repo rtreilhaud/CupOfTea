@@ -1,8 +1,7 @@
 // Importation des classes
 import Cart from './class/Cart.js';
 import Ajax from './class/Ajax.js';
-
-let product;
+import StripePayment from './class/StripePayment.js';
 
 document.addEventListener('DOMContentLoaded',()=>{
 
@@ -49,7 +48,45 @@ document.addEventListener('DOMContentLoaded',()=>{
     const orderBtn = document.getElementById('orderBtn');
     if(orderBtn !== null){
 
-        orderBtn.addEventListener('click', ()=> ajax.orderCart());
+        orderBtn.addEventListener('click', ()=> {
+
+            // Envoie la commande
+            const promise = ajax.orderCart();
+
+            // Affichage du formulaire de paiement
+            const stripe = new StripePayment();
+            stripe.displayForm(document.querySelector('main'), cart.total);
+
+            // On gère la saisie
+            stripe.card.addEventListener('change', (event)=>{
+
+                if(event.error){
+                    stripe.errors.textContent = event.error.message;
+                }else{
+                    stripe.errors.textContent = '';
+                }
+            })
+
+            // Paiement de la commande
+            promise.then(orderID => {
+
+                // Sauvegarde le montant total du panier
+                const totalPrice = cart.total;
+
+                // Vide la panier (sans recharger la page)
+                cart.clearCart('cart', false);
+
+                stripe.Btn.addEventListener('click', ()=>{
+
+                    stripe.handlePayment(totalPrice, orderID)
+                    .then(redirect => {
+
+                        // Redirige vers la page 'Mes commandes'
+                        window.location.replace(redirect);
+                    })
+                })
+            })
+        })
     }
 
     // Bouton pour vider le panier
