@@ -4,7 +4,7 @@ namespace App\Controller;
 // Nomme les namespace utilisés
 use App\Autoloader;
 use App\Controller\{ToolController, FormController};
-use App\Models\{Product, Orders};
+use App\Models\{Product, Orders, OrderDetails};
 
 Autoloader::register();
 
@@ -14,6 +14,7 @@ class AjaxController{
     private $_formCTRL;
     private $_productMod;
     private $_ordersMod;
+    private $_oDetailsMod;
     private $_POST;
 
     public function __construct($action, $POST){
@@ -23,6 +24,7 @@ class AjaxController{
         $this->_formCTRL = new FormController();
         $this->_productMod = new Product();
         $this->_ordersMod = new Orders();
+        $this->_oDetailsMod = new OrderDetails();
         $this->_POST = $POST;
 
         // Vérifie si la fonction existe
@@ -50,6 +52,25 @@ class AjaxController{
         echo json_encode($this->_formCTRL->checkPasswordUpdate($this->_POST));
     }
 
+    // Modifier le statut de la commande
+    public function updateOrderStatus(){
+
+        if(!empty($this->_POST['orderID']) && !empty($this->_POST['status'])){
+
+            $updated = $this->_ordersMod->updateOrderStatus($this->_POST['orderID'], $this->_POST['status']);
+
+            if($updated){
+                echo json_encode(['success' => "Le statut de la commande a été modifié"]);
+            }else{
+                echo json_encode(['error' => "Le statut de la commande n'a pas pu être modifié"]);
+            }
+
+        }else{
+
+            echo json_encode(['error' => "Le statut de la commande n'a pas pu être modifié"]);
+        }
+    }
+
     // Supprimer le compte
     public function deleteAccount(){
 
@@ -62,34 +83,81 @@ class AjaxController{
         echo json_encode($this->_productMod->fetchProduct($this->_POST['productID']));
     }
 
+    // Récupérer les informations d'une commande
+    public function fetchOrderDetails(){
+
+        echo json_encode($this->_oDetailsMod->fetchOrderDetails($this->_POST['orderID']));
+    }
+
     // Enregistrer la commande si l'utilisateur est connecté
     public function orderCart(){
 
         if($this->_tools->isConnected()){
 
-            $saved = $this->_ordersMod->addOrder($_SESSION['id'], $this->_POST['total']);
-            if($saved){
+            if(!empty($this->_POST['total']) && !empty($this->_POST['cart'])){
 
-                // Récupère l'ID de la dernière commande pour ajouter ses détails
-                $lastID = $this->_ordersMod->fetchLastOrderID();
-    
-                // Ajoute chaque ligne du panier dans la base de données
-                foreach(json_decode($this->_POST['cart'], true) as $item){
+                $saved = $this->_ordersMod->addOrder($_SESSION['id'], $this->_POST['total']);
+                if($saved){
 
-                    $this->_ordersMod->addOrderDetails($item, $lastID);
+                    // Récupère l'ID de la dernière commande pour ajouter ses détails
+                    $lastID = $this->_ordersMod->fetchLastOrderID();
+        
+                    // Ajoute chaque ligne du panier dans la base de données
+                    foreach(json_decode($this->_POST['cart'], true) as $item){
+
+                        $this->_oDetailsMod->addOrderDetails($item, $lastID);
+                    }
+
+                    echo json_encode([
+                        'success' => "La commande n°{$lastID} a été enregistrée (visible dans <a href='index.php?page=orders'> 'Mes commandes' </a>)",
+                        'orderID' => $lastID
+                    ]);
+
+                }else{
+
+                    echo json_encode(['error' => "La commande n'a pas pu être enregistrée"]);
                 }
-
-                echo json_encode(['success' => "La commande n°{$lastID} a été enregistrée"]);
 
             }else{
 
                 echo json_encode(['error' => "La commande n'a pas pu être enregistrée"]);
             }
-            
 
         }else{
 
             echo json_encode(['error' => 'Vous devez être connecté pour passer une commande']);
+        }
+    }
+
+    // Envoyer une intention de paiement à Stripe si l'utilisateur est connecté
+    public function sendPaymentIntent(){
+
+        if($this->_tools->isConnected()){
+
+            if(isset($_POST['total']) && !empty($_POST['total'])){
+
+                require_once 'vendor/autoload.php';
+                $total = (float) $_POST['total'];
+
+                // On instancie Stripe
+                \Stripe\Stripe::setApiKey('sk_test_51IiLCzBLEnZW0sEoIGgNT25czLkvAUPrp7rWGRlacyqdHlXFLKxfqi4BI1ebw8Q2d54HSdSiEgnFdA0aG9UDaWsR00HkkXi8fv');
+
+                // Intention de paiement
+                $intent = \Stripe\PaymentIntent::create([
+                    'amount' => $total * 100, // Montant en centimes
+                    'currency' => 'eur'
+                ]);
+
+                echo json_encode(['intent' => $intent]);
+
+            }else{
+
+                echo json_encode(['error' => "Le paiement n'a pas pu être effectué"]);
+            }
+
+        }else{
+
+            echo json_encode(['error' => 'Vous devez être connecté pour payer une commande']);
         }
     }
 

@@ -26,7 +26,7 @@ class Orders extends Connect{
         return $order['Max(id)'];
     }
 
-    // Ajoute une nouvelle commande dans la base de données 'orders'
+    // Ajoute une nouvelle commande dans la base de données
     public function addOrder(string $userID, string $total){
 
         // Requête d'insertion
@@ -40,22 +40,29 @@ class Orders extends Connect{
                                ]);
     }
 
-    // Ajoute les détails de la commande dans la base de données 'orderdetails'
-    public function addOrderDetails($item, string $orderID){
-  
-        // Requête d'insertion
-        $sql = "INSERT INTO `orderdetails` 
-                (`order_id`, `product_id`, `product_name`, `quantity`, `unit_price`) 
-                VALUES (:orderID, :prodID, :prodName, :quantity, :price)";
+    // Modifie le statut d'une commande
+    public function updateOrderStatus(int $orderID, string $status){
+
+        // Requête de mise à jour
+        $sql = "UPDATE `orders` SET `status` = '{$status}'
+                WHERE id = :orderID";
         // Je prépare la requête
         $query = $this->_pdo->prepare($sql);
         // Puis je l'exécute 
-        return $query->execute([
-                                ':orderID' => $orderID,
-                                ':prodID' => $item['id'],
-                                ':prodName' => $item['name'],
-                                ':quantity' => $item['quantity'], 
-                                ':price' => $item['price']
-                               ]);
+        return $query->execute([':orderID' => $orderID]);
+    }
+
+    // Récupère toutes les commandes de l'utilisateur
+    public function fetchOrders(int $userID): array{
+    
+        // Requête de sélection
+        $sql = "SELECT * FROM `orders`
+                WHERE `user_id` = :userID";
+        // Je prépare la requête
+        $query = $this->_pdo->prepare($sql);
+        // Puis je l'exécute 
+        $query->execute([':userID' => $userID]);
+        // Je recupère plusieurs lignes donc j'ecris fetchAll et je retourne le résultat 
+        return $query->fetchALL(PDO::FETCH_ASSOC);
     }
 }

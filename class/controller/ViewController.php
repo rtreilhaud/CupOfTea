@@ -4,7 +4,7 @@ namespace App\Controller;
 // Nomme les namespace utilisés
 use App\Autoloader;
 use App\Controller\{ToolController, FormController};
-use App\Models\{Category, Product, User};
+use App\Models\{Category, Product, User, Orders, OrderDetails};
 
 Autoloader::register();
 
@@ -15,6 +15,8 @@ class ViewController{
     private $_categoryMod;
     private $_productMod;
     private $_userMod;
+    private $_ordersMod;
+    private $_oDetailsMod;
 
     public function __construct($page){
 
@@ -24,6 +26,8 @@ class ViewController{
         $this->_categoryMod = new Category();
         $this->_productMod = new Product();
         $this->_userMod = new User();
+        $this->_ordersMod = new Orders();
+        $this->_oDetailsMod = new OrderDetails();
 
         // Récupère la fonction liée à la page
         $view = $page . 'View';
@@ -176,7 +180,7 @@ class ViewController{
         // S'il n'est pas connecté, redirige vers la page de connexion
         }else{
 
-            $this->ools->redirect('index.php?page=login');
+            $this->_tools->redirect('index.php?page=login');
         }
     }
 
@@ -190,6 +194,27 @@ class ViewController{
         ];
 
         return $data;
+    }
+
+      // Page 'Mes commandes'
+      public function ordersView(){
+
+        // Vérifie si l'utilisateur est connecté
+        if($this->_tools->isConnected()){
+
+            // Données de la page
+            $data = [
+                'path' => 'orders.php',
+                'title' => 'Mes commandes',
+                'orders' => $this->_ordersMod->fetchOrders($_SESSION['id'])
+            ];
+
+            return $data;
+
+        }else{
+
+            $this->_tools->redirect('index.php?page=login');
+        }
     }
 
     // Affiche le template en fonction des variables données
