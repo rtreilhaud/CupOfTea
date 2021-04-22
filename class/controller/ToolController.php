@@ -16,6 +16,42 @@ class ToolController{
         return (array_key_exists('role', $_SESSION)) ? true : false ;
     }
 
+    // Convertir une date US en date européenne
+    public function convertDate(string $date){
+
+        $parts = explode('-', $date);
+        $day = explode(' ', $parts[2]);
+        $newDate = $day[0].'/'.$parts[1].'/'.$parts[0];
+
+        return $newDate;
+    }
+
+    // Traduire le statut d'une commande
+    public function translateStatus(string $status){
+
+        switch($status){
+
+            case 'unpaid':
+                return 'Non payée';
+            break;
+
+            case 'ordered':
+                return 'Commandée';
+            break;
+
+            case 'shipped':
+                return 'Expédiée';
+            break;
+
+            case 'received':
+                return 'Livrée';
+            break;
+
+            default:
+                return 'Inconnu';
+        }
+    }
+
     /********** Gestion des cookies **********/
 
     // Ajoute les cookies appelés en paramètres
