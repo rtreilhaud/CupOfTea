@@ -12,20 +12,6 @@ class Orders extends Connect{
         $this->_pdo = $this->connection();
     }
 
-    // Récupère la dernière commande enregistrée
-    public function fetchLastOrderID(){
-
-        // Requête de sélection
-        $sql = "SELECT Max(id) FROM `orders`";
-        // Je prépare la requête
-        $query = $this->_pdo->prepare($sql);
-        // Puis je l'exécute 
-        $query->execute();
-        // Je recupère le résultat 
-        $order = $query->fetch(PDO::FETCH_ASSOC);
-        return $order['Max(id)'];
-    }
-
     // Ajoute une nouvelle commande dans la base de données
     public function addOrder(string $userID, string $total){
 
@@ -34,10 +20,11 @@ class Orders extends Connect{
         // Je prépare la requête
         $query = $this->_pdo->prepare($sql);
         // Puis je l'exécute 
-        return $query->execute([
-                                ':userID' => $userID,
-                                ':total' => $total,
-                               ]);
+        $query->execute([
+                            ':userID' => $userID,
+                            ':total' => $total,
+                        ]);
+        return $this->_pdo->lastInsertId();
     }
 
     // Modifie le statut d'une commande

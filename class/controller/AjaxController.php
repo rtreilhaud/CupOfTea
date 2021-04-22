@@ -96,11 +96,10 @@ class AjaxController{
 
             if(!empty($this->_POST['total']) && !empty($this->_POST['cart'])){
 
-                $saved = $this->_ordersMod->addOrder($_SESSION['id'], $this->_POST['total']);
-                if($saved){
-
-                    // Récupère l'ID de la dernière commande pour ajouter ses détails
-                    $lastID = $this->_ordersMod->fetchLastOrderID();
+                // Ajoute la commande à la base de données et récupère son ID
+                $lastID = $this->_ordersMod->addOrder($_SESSION['id'], $this->_POST['total']);
+               
+                if($lastID){
         
                     // Ajoute chaque ligne du panier dans la base de données
                     foreach(json_decode($this->_POST['cart'], true) as $item){
