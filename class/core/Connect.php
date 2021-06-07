@@ -5,7 +5,7 @@ use \PDO;
 abstract class Connect{
     
     protected string $_host      = 'localhost';
-    protected string $_dbName    = 'cupoftea';
+    protected string $_dbName    = '3wa_cupoftea';
     protected string $_user      = 'root';
     protected string $_password  = '';
     protected $pdo;
